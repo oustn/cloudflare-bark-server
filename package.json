@@ -3,20 +3,36 @@
 	"version": "0.0.1",
 	"private": true,
 	"scripts": {
-		"deploy": "wrangler deploy",
+		"generate": "drizzle-kit generate",
+    "predeploy": "npm run generate && wrangler d1 migrations apply bark --remote",
+    "deploy": "wrangler deploy",
+		"predev": "npm run generate && wrangler d1 migrations apply bark --local",
 		"dev": "wrangler dev",
 		"start": "wrangler dev",
-		"cf-typegen": "wrangler types"
-	},
+		"cf-typegen": "wrangler types",
+    "test": "vitest"
+  },
 	"dependencies": {
+		"@oustn/cloudflare-apns2": "^1.0.0",
+		"@paralleldrive/cuid2": "^2.2.2",
 		"chanfana": "^2.0.2",
+		"drizzle-orm": "^0.36.1",
 		"hono": "^4.4.7",
 		"zod": "^3.23.8"
 	},
 	"devDependencies": {
+		"@cloudflare/vitest-pool-workers": "^0.5.27",
 		"@cloudflare/workers-types": "^4.20241106.0",
 		"@types/node": "20.8.3",
 		"@types/service-worker-mock": "^2.0.1",
+		"drizzle-kit": "^0.28.0",
+		"miniflare": "^3.20241106.0",
+		"vitest": "2.0.5",
 		"wrangler": "^3.60.3"
+	},
+	"packageManager": "pnpm@9.12.3",
+	"volta": {
+		"node": "20.18.0",
+		"pnpm": "9.12.3"
 	}
 }
