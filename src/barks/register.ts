@@ -52,7 +52,6 @@ export class RegisterEndpoint extends OpenAPIRoute {
 
   async handle(c: Context) {
     const data = await this.getValidatedData<typeof this.schema>();
-    console.log(data)
     const device = await getDevice(data)
 
     if (!device.token) {
