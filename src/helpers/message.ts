@@ -7,6 +7,7 @@ export async function saveMessage(ctx: Context, notification: Notification) {
   const persist: boolean = ctx.var.persist
   if (!persist) return
   const db: DrizzleD1Database = ctx.var.db
+  if (!db) return
 
   const message = notification.buildApnsOptions()
   const alert = (message.aps?.alert ?? {}) as { title?: string, body?: string }
