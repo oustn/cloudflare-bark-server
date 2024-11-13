@@ -3,29 +3,21 @@
 set +e
 
 # Create wrangler.toml file
-content=$(< ./wrangler.example.toml)
-
-new_content="$content"
+cp ./wrangler.example.toml ./wrangler.toml
 
 if [ -n "$CUSTOM_DOMAIN" ]; then
-  new_content+="\nroute = { pattern = \"${CUSTOM_DOMAIN}\", custom_domain = true }"
+  echo "route = { pattern = \"${CUSTOM_DOMAIN}\", custom_domain = true }" >> ./wrangler.toml
 fi
 
 if [ -n "$D1_DB" ] && [ -n "$D1_NAME" ]; then
-  new_content+="\n[[d1_databases]]\nbinding = \"DB\"\ndatabase_name = \"$D1_NAME\"\ndatabase_id = \"$D1_DB\"\nmigrations_dir = \"src/migrations\""
+  echo -e "\n[[d1_databases]]\nbinding = \"DB\"\ndatabase_name = \"$D1_NAME\"\ndatabase_id = \"$D1_DB\"\nmigrations_dir = \"src/migrations\"" >> ./wrangler.toml
 fi
 
 if [ "$PERSIST" = "true" ]; then
-  new_content+="\n[vars]\nPERSIST = true"
+  echo -e "\n[vars]\nPERSIST = true" >> ./wrangler.toml
 fi
 
-# if wrangler not exists
-echo "$new_content"
-
-if [ ! -f ./wrangler.toml ]; then
-  echo -e "$new_content" > ./wrangler.toml
-  exit 0
-fi
+cat ./wrangler.toml
 
 if [ -n "$D1_DB" ] && [ -n "$D1_NAME" ]; then
   wrangler d1 migrations apply "$D1_NAME" --remote

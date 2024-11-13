@@ -173,3 +173,4 @@ dist
 .wrangler
 
 wrangler.toml
+wrangler.toml.local
