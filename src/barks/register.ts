@@ -65,8 +65,17 @@ export class RegisterEndpoint extends OpenAPIRoute {
         return c.json({
           data: {
             key,
-            device_key: device.key,
+            device_key: key,
             device_token: device.token,
+          }
+        })
+      }
+      if (device.token === 'deleted') {
+        return c.json({
+          data: {
+            key,
+            device_key: device.key,
+            device_token: 'deleted',
           }
         })
       }
@@ -74,6 +83,7 @@ export class RegisterEndpoint extends OpenAPIRoute {
     }
 
     const db: DrizzleD1Database = c.var.db
+
     try {
       // 1. first select
       const exist = device.key ? await db.select().from(devices)
@@ -85,6 +95,17 @@ export class RegisterEndpoint extends OpenAPIRoute {
             key: device.key,
             device_key: device.key,
             device_token: device.token,
+          }
+        })
+      }
+      if (device.token === 'deleted') {
+        await db.delete(devices).where(eq(devices.key, device.key))
+
+        return c.json({
+          data: {
+            key: device.key,
+            device_key: device.key,
+            device_token: 'deleted',
           }
         })
       }
