@@ -5,6 +5,8 @@ Bark 服务端，基于 Cloudflare Workers 实现，新增单用户模式和通�
 ## 准备工作
 
 1. 创建 [Cloudflare API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/)
+   - 选择 Edit Cloudflare Workers 模板
+   - 需要以下权限：Workers Builds Configuration、Workers Routes、Workers Scripts、D1
 2. 获取 [Cloudflare Account ID](https://developers.cloudflare.com/fundamentals/setup/find-account-and-zone-ids/)
 3. [可选] 多用户模式或保存通知，需要创建 [D1 SQL 数据库](https://developers.cloudflare.com/d1/get-started/)，并获取数据库名称和 ID
 4. [可选] 单用户模式，需要获取 Bark Device Token：打开 Bark App -> 点击右下角设置 -> 点击 Device Token
@@ -38,6 +40,10 @@ Bark 服务端，基于 Cloudflare Workers 实现，新增单用户模式和通�
 8. 添加密钥类型，名称 KEY，值为 Bark Key
 
 访问 `https://your-worker-name.your-account.workers.dev/info`，可以看到 serverless 为 true
+
+## 通知保存
+
+当配置 D1 数据库和开启通知保存时，可以保存通知到数据库中。目前暂时没有提供浏览历史通知功能，可以直接在数据库的 `messages` 表中查看。
 
 ## 使用方法
 
