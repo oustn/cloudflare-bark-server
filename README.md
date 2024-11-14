@@ -16,11 +16,11 @@ Bark 服务端，基于 Cloudflare Workers 实现，新增单用户模式和通�
 2. 在仓库的 Settings -> Secrets and variables -> Actions 中添加以下 Secrets：
    - `CLOUDFLARE_ACCOUNT_ID`：Cloudflare Account ID
    - `CLOUDFLARE_API_TOKEN`：Cloudflare API token
+3. 在仓库的 Settings -> Secrets and variables -> Actions 中添加以下 Variables：
+   - `PERSIST`：是否启用多用户模式和通知保存，值为 `true`[可选，开启通知保存时配置]
+   - `CUSTOM_DOMAIN`：自定义域名[可选]
    - `D1_NAME`：D1 数据库名称[可选]
    - `D1_ID`：D1 数据库 ID[可选]
-3. 在仓库的 Settings -> Secrets and variables -> Actions 中添加以下 Variables：
-    - `PERSIST`：是否启用多用户模式和通知保存，值为 `true`[可选，开启通知保存时配置]
-    - `CUSTOM_DOMAIN`：自定义域名[可选]
 4. 启用 Actions，手动运行 `Deploy` workflow
 
 ## 单用户模式
