@@ -42,7 +42,7 @@ function transform(params: Record<string, unknown>): Record<string, unknown> {
   return payload.get()
 }
 
-export async function resolveNotification(c: Context) {
+export async function resolveNotification(c: Context, body: Record<string, unknown>) {
   const params: Record<string, unknown> = {
     category: 'myNotificationCategory',
     body: 'NoContent',
@@ -55,12 +55,8 @@ export async function resolveNotification(c: Context) {
 
   Object.assign(params, formBody)
 
-  try {
-    const body = await c.req.json()
-    if (typeof body === 'object' && body) {
-      Object.assign(params, body)
-    }
-  } catch (e) {
+  if (typeof body === 'object' && body) {
+    Object.assign(params, body)
   }
 
   const {device_key: deviceKey, ...rest} = params

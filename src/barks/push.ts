@@ -1,6 +1,6 @@
 import {contentJson, OpenAPIRoute} from "chanfana";
 import {Context} from "hono"
-import {z} from "zod";
+import {z, ZodObject} from "zod";
 
 import {resolveNotification, saveMessage} from "../helpers"
 
@@ -42,6 +42,14 @@ export function resolvePushEndPoint(meta: PushMeta): typeof OpenAPIRoute {
     params['category'] = categorySchema
   }
 
+  const jsonSchema = !get || push ? {
+    content: {
+      "application/json": {
+        schema: z.record(z.string(), z.unknown()).describe("Payload for notification"),
+      },
+    }
+  } : null
+
   class PushEndpoint extends OpenAPIRoute {
     static name = `${get ? 'get' : (push ? 'push' : 'post')}${title ? '_title' : ''}${body ? '_body' : ''}${category ? '_category' : ''}_PushEndpoint`
 
@@ -49,7 +57,11 @@ export function resolvePushEndPoint(meta: PushMeta): typeof OpenAPIRoute {
       tags: ["Bark"],
       summary: "Push notification endpoint",
       request: {
-        params: z.object(params)
+        params: z.object(params),
+        body: jsonSchema,
+        query: z.record(z.string(), z.unknown()).describe("Query parameters") as unknown as ZodObject<any, any, any, {
+          [x: string]: any;
+        }, { [x: string]: any; }>,
       },
       responses: {
         "200": {
@@ -64,7 +76,9 @@ export function resolvePushEndPoint(meta: PushMeta): typeof OpenAPIRoute {
     };
 
     async handle(c: Context) {
-      const notification = await resolveNotification(c)
+      const {body} = await this.getValidatedData<typeof this.schema>();
+
+      const notification = await resolveNotification(c, body)
 
       const client = new ApnsClient({
         team: '5U8LBRXG3A',
@@ -82,7 +96,10 @@ export function resolvePushEndPoint(meta: PushMeta): typeof OpenAPIRoute {
           data: notification.buildApnsOptions()
         })
       } catch (e) {
-        return c.json({ message: `push failed: ${e?.reason ?? e?.message ?? JSON.stringify(e)}`, data: notification.buildApnsOptions() }, 500)
+        return c.json({
+          message: `push failed: ${e?.reason ?? e?.message ?? JSON.stringify(e)}`,
+          data: notification.buildApnsOptions()
+        }, 500)
       }
     }
   }
