@@ -19,7 +19,7 @@ importers:
         version: 2.3.0
       drizzle-orm:
         specifier: ^0.36.1
-        version: 0.36.1(@cloudflare/workers-types@4.20241112.0)
+        version: 0.36.2(@cloudflare/workers-types@4.20241112.0)
       hono:
         specifier: ^4.4.7
         version: 4.6.10
@@ -1235,8 +1235,8 @@ packages:
     resolution: {integrity: sha512-JimOV+ystXTWMgZkLHYHf2w3oS28hxiH1FR0dkmJLc7GHzdGJoJAQtQS5DRppnabsRZwE2U1F6CuezVBgmsBBQ==}
     hasBin: true
 
-  drizzle-orm@0.36.1:
-    resolution: {integrity: sha512-F4hbimnMEhyWzDowQB4xEuVJJWXLHZYD7FYwvo8RImY+N7pStGqsbfmT95jDbec1s4qKmQbiuxEDZY90LRrfIw==}
+  drizzle-orm@0.36.2:
+    resolution: {integrity: sha512-uVwIdQMo+zwI09hCSNVR29tYn4Vw6F7gga/CsZgDJmTSGDdUdLo+Ur45Qc3gDK7oFTxD/eRANNnPgvPmRY+jSA==}
     peerDependencies:
       '@aws-sdk/client-rds-data': '>=3'
       '@cloudflare/workers-types': '>=3'
@@ -1257,7 +1257,7 @@ packages:
       '@xata.io/client': '*'
       better-sqlite3: '>=7'
       bun-types: '*'
-      expo-sqlite: '>=13.2.0'
+      expo-sqlite: '>=14.0.0'
       knex: '*'
       kysely: '*'
       mysql2: '>=2'
@@ -3438,7 +3438,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  drizzle-orm@0.36.1(@cloudflare/workers-types@4.20241112.0):
+  drizzle-orm@0.36.2(@cloudflare/workers-types@4.20241112.0):
     optionalDependencies:
       '@cloudflare/workers-types': 4.20241112.0
 
