@@ -16,7 +16,7 @@ importers:
         version: 2.2.2
       chanfana:
         specifier: ^2.0.2
-        version: 2.2.0
+        version: 2.3.0
       drizzle-orm:
         specifier: ^0.36.1
         version: 0.36.1(@cloudflare/workers-types@4.20241112.0)
@@ -1087,8 +1087,8 @@ packages:
     resolution: {integrity: sha512-dLitG79d+GV1Nb/VYcCDFivJeK1hiukt9QjRNVOsUtTy1rR1YJsmpGGTZ3qJos+uw7WmWF4wUwBd9jxjocFC2w==}
     engines: {node: ^12.17.0 || ^14.13 || >=16.0.0}
 
-  chanfana@2.2.0:
-    resolution: {integrity: sha512-HLaV7WB64JChp+orMLRV3rK64jyXKasC70jHW5C+rBHxaVyolMNro1cklCHrYVAjz/SkyrPj3vNxrpxJTllQ2Q==}
+  chanfana@2.3.0:
+    resolution: {integrity: sha512-w00UUBicvW0V8nPqYQciRJeDzLvJdNAkK5mQWbTHctPE21zJxqIFG/uMkjJdnWfAyvRtVOGyBZ+weoWxN9tqYg==}
 
   char-regex@1.0.2:
     resolution: {integrity: sha512-kWWXztvZ5SBQV+eRgKFeh8q5sLuZY2+8WUIzlxWVTg+oGwY14qylx1KbKzHd8P6ZYkAg0xyIDU9JMHhyJMZ1jw==}
@@ -3282,7 +3282,7 @@ snapshots:
 
   chalk@5.3.0: {}
 
-  chanfana@2.2.0:
+  chanfana@2.3.0:
     dependencies:
       '@asteasolutions/zod-to-openapi': 7.2.0(zod@3.23.8)
       js-yaml: 4.1.0
