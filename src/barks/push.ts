@@ -1,6 +1,6 @@
 import {contentJson, OpenAPIRoute} from "chanfana";
 import {Context} from "hono"
-import {z, ZodObject} from "zod";
+import {z} from "zod";
 
 import {resolveNotification, saveMessage} from "../helpers"
 
@@ -29,17 +29,27 @@ export function resolvePushEndPoint(meta: PushMeta): typeof OpenAPIRoute {
   const categorySchema = z.string().describe('Notification category')
 
   const params = {}
+  const queries = {
+    device_key: z.string().describe('Device key').optional().nullable(),
+    title: titleSchema.optional().nullable(),
+    body: bodySchema.optional().nullable(),
+    category: categorySchema.optional().nullable(),
+  }
   if (!push) {
     params['device_key'] = z.string().describe('Device key')
+    Reflect.deleteProperty(queries, 'device_key')
   }
   if (title) {
     params['title'] = titleSchema
+    Reflect.deleteProperty(queries, 'title')
   }
   if (body) {
     params['body'] = bodySchema
+    Reflect.deleteProperty(queries, 'body')
   }
   if (category) {
     params['category'] = categorySchema
+    Reflect.deleteProperty(queries, 'category')
   }
 
   const jsonSchema = !get || push ? {
@@ -59,9 +69,7 @@ export function resolvePushEndPoint(meta: PushMeta): typeof OpenAPIRoute {
       request: {
         params: z.object(params),
         body: jsonSchema,
-        query: z.record(z.string(), z.unknown()).describe("Query parameters") as unknown as ZodObject<any, any, any, {
-          [x: string]: any;
-        }, { [x: string]: any; }>,
+        query: z.object(queries),
       },
       responses: {
         "200": {

@@ -26,7 +26,7 @@ app.use("/:device_key/*", dbMiddleware)
 
 // Setup OpenAPI registry
 const openapi = fromHono(app, {
-  docs_url: "/",
+  docs_url: "/docs",
 });
 
 // Basic info
