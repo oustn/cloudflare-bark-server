@@ -3,5 +3,9 @@
   "extends": [
     "config:recommended"
   ],
-  "baseBranches": ["dev"]
+  "baseBranches": ["dev"],
+  "lockFileMaintenance": {
+    "enabled": true,
+    "automerge": true
+  }
 }
