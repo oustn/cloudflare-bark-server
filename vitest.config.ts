@@ -4,7 +4,12 @@ export default defineWorkersConfig({
   test: {
     poolOptions: {
       workers: {
-        wrangler: { configPath: "./wrangler.toml" },
+        wrangler: { configPath: "./wrangler.test.toml" },
+        miniflare: {
+          d1Databases: {
+            DB: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+          },
+        },
       },
     },
   },

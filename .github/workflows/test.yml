@@ -1,0 +1,30 @@
+name: Test
+on:
+  push:
+    branches:
+      - main
+      - dev
+
+jobs:
+  test:
+    if: github.repository == 'oustn/cloudflare-bark-server'
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          run_install: false
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "lts/*"
+          cache: 'pnpm'
+      - name: Install dependencies
+        run: pnpm install
+      - name: Run test
+        run: npm run test
