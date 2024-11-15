@@ -4,6 +4,12 @@ on:
     branches:
       - main
       - dev
+  pull_request:
+    types:
+      - opened
+      - synchronize
+    branches:
+      - renovate/**
 
 jobs:
   test:
