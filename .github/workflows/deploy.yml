@@ -15,12 +15,11 @@ jobs:
       - name: Deploy
         uses: cloudflare/wrangler-action@v3
         env:
-          D1_NAME: ${{ vars.D1_NAME }}
-          D1_ID: ${{ vars.D1_ID }}
-          PERSIST: ${{ vars.PERSIST }}
-          CUSTOM_DOMAIN: ${{ vars.CUSTOM_DOMAIN }}
+          D1_NAME: ${{ secrets.D1_NAME }}
+          D1_ID: ${{ secrets.D1_ID }}
+          PERSIST: ${{ secrets.PERSIST }}
+          CUSTOM_DOMAIN: ${{ secrets.CUSTOM_DOMAIN }}
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           preCommands: ./prepare.sh
-          quiet: true

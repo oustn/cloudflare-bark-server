@@ -19,7 +19,7 @@ if [ "$PERSIST" = "true" ]; then
   echo -e "\n[vars]\nPERSIST = true" >> ./wrangler.toml
 fi
 
-sed -e "s/$D1_NAME/***/g" < ./wrangler.toml | sed -e "s/$D1_ID/***/g" | sed -e "s/$CUSTOM_DOMAIN/***/g"
+cat ./wrangler.toml
 
 if [ -n "$D1_ID" ] && [ -n "$D1_NAME" ]; then
   yes | npx wrangler d1 migrations apply "$D1_NAME" --remote
