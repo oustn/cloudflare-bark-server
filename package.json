@@ -4,14 +4,14 @@
 	"private": true,
 	"scripts": {
 		"generate": "drizzle-kit generate",
-    "predeploy": "npm run generate && wrangler d1 migrations apply bark --remote",
-    "deploy": "wrangler deploy",
+		"predeploy": "npm run generate && wrangler d1 migrations apply bark --remote",
+		"deploy": "wrangler deploy",
 		"predev": "npm run generate && wrangler d1 migrations apply bark --local",
 		"dev": "wrangler dev",
 		"start": "wrangler dev",
 		"cf-typegen": "wrangler types",
-    "test": "vitest"
-  },
+		"test": "vitest"
+	},
 	"dependencies": {
 		"@oustn/cloudflare-apns2": "^1.0.0",
 		"@paralleldrive/cuid2": "^2.2.2",
@@ -23,10 +23,12 @@
 	"devDependencies": {
 		"@cloudflare/vitest-pool-workers": "^0.5.27",
 		"@cloudflare/workers-types": "^4.20241106.0",
+		"@semantic-release/commit-analyzer": "^13.0.0",
 		"@types/node": "20.8.3",
 		"@types/service-worker-mock": "^2.0.1",
 		"drizzle-kit": "^0.28.0",
 		"miniflare": "^3.20241106.0",
+		"semantic-release": "^24.2.0",
 		"vitest": "2.0.5",
 		"wrangler": "^3.60.3"
 	},
