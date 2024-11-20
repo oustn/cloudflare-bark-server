@@ -22,7 +22,7 @@ importers:
         version: 0.36.2(@cloudflare/workers-types@4.20241112.0)
       hono:
         specifier: ^4.4.7
-        version: 4.6.10
+        version: 4.6.11
       zod:
         specifier: ^3.23.8
         version: 3.23.8
@@ -1514,8 +1514,8 @@ packages:
   highlight.js@10.7.3:
     resolution: {integrity: sha512-tzcUFauisWKNHaRkN4Wjl/ZA07gENAjFl3J/c480dprkGTg5EQstgaNFqBfUqCq54kZRIEcreTsAgF/m2quD7A==}
 
-  hono@4.6.10:
-    resolution: {integrity: sha512-IXXNfRAZEahFnWBhUUlqKEGF9upeE6hZoRZszvNkyAz/CYp+iVbxm3viMvStlagRJohjlBRGOQ7f4jfcV0XMGg==}
+  hono@4.6.11:
+    resolution: {integrity: sha512-f0LwJQFKdUUrCUAVowxSvNCjyzI7ZLt8XWYU/EApyeq5FfOvHFarBaE5rjU9HTNFk4RI0FkdB2edb3p/7xZjzQ==}
     engines: {node: '>=16.9.0'}
 
   hook-std@3.0.0:
@@ -3676,7 +3676,7 @@ snapshots:
 
   highlight.js@10.7.3: {}
 
-  hono@4.6.10: {}
+  hono@4.6.11: {}
 
   hook-std@3.0.0: {}
 
