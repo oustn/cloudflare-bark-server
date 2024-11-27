@@ -1,0 +1,65 @@
+// 获取 Schedule 列表
+GET {{API_URL}}/schedules
+Content-Type: application/json
+Authorization: Bearer {{KEY}}
+
+###
+
+// 创建 Schedule
+POST {{API_URL}}/schedules
+Content-Type: application/json
+Authorization: Bearer {{KEY}}
+
+{
+  "name": "测试",
+  "type": "daily",
+  "weekend": true,
+  "at": "12:15",
+  "in": [],
+  "payload": {
+    "title": "Hello World",
+    "body": "Hello World",
+    "category": "test"
+  },
+  "enabled": true
+}
+
+###
+
+// 删除 Schedule
+DELETE {{API_URL}}/schedules/s8itwnulaatgp7bcfog2w0c1
+Content-Type: application/json
+Authorization: Bearer {{KEY}}
+
+###
+
+// 获取 Schedule
+GET {{API_URL}}/schedules/ulvg1oxxzfm2af4t7cc8mjsp
+Content-Type: application/json
+Authorization: Bearer {{KEY}}
+
+###
+
+// 更新 Schedule
+PUT {{API_URL}}/schedules/ulvg1oxxzfm2af4t7cc8mjsp
+Content-Type: application/json
+Authorization: Bearer {{KEY}}
+
+{
+  "name": "测试123",
+  "remark": "这是更新的测试 456"
+}
+
+###
+
+# Enable Schedule
+PUT {{API_URL}}/schedules/ulvg1oxxzfm2af4t7cc8mjsp/enable
+Content-Type: application/json
+Authorization: Bearer {{KEY}}
+
+###
+
+# Disable Schedule
+PUT {{API_URL}}/schedules/ulvg1oxxzfm2af4t7cc8mjsp/disable
+Content-Type: application/json
+Authorization: Bearer {{KEY}}

@@ -15,6 +15,20 @@
       "when": 1731485800162,
       "tag": "0001_nosy_clea",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1732677923620,
+      "tag": "0002_sticky_randall_flagg",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "6",
+      "when": 1732697071909,
+      "tag": "0003_spicy_luckman",
+      "breakpoints": true
     }
   ]
 }

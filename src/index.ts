@@ -1,9 +1,10 @@
 import {fromHono} from "chanfana";
-import {Hono, Context} from "hono";
+import {Hono, Context, NotFoundHandler} from "hono";
 import {
   dbMiddleware,
   initMiddleware,
-  barkResponseMiddleware
+  barkResponseMiddleware,
+  keyAuthMiddleware
 } from "./middlewares"
 import {
   PingEndpoint,
@@ -12,6 +13,14 @@ import {
   RegisterEndpoint,
   resolvePushEndPoint
 } from "./barks"
+
+import {
+  ScheduleCreate,
+  ScheduleList,
+  ScheduleDelete,
+  ScheduleFetch,
+  ScheduleUpdate, ScheduleEnable, ScheduleDisable
+} from "./endpoints"
 
 // Start a Hono app
 const app = new Hono<{
@@ -23,6 +32,7 @@ app.use(barkResponseMiddleware)
 app.use("/register/*", dbMiddleware)
 app.use("/push", dbMiddleware)
 app.use("/:device_key/*", dbMiddleware)
+app.use("/api/*", dbMiddleware)
 
 // Setup OpenAPI registry
 const openapi = fromHono(app, {
@@ -40,6 +50,30 @@ openapi.get("/register/:key", CheckEndpoint);
 openapi.get("/register", RegisterEndpoint);
 openapi.post("/register", RegisterEndpoint);
 openapi.post("/push", resolvePushEndPoint({push: true}));
+
+// Schedule
+const schedule = new Hono<{
+  Bindings: Env
+}>()
+
+schedule.use(keyAuthMiddleware)
+
+const scheduleApi = fromHono(schedule, {
+  base: "/api/schedules",
+})
+
+scheduleApi.post("/", ScheduleCreate)
+scheduleApi.get("/", ScheduleList)
+scheduleApi.delete("/:id", ScheduleDelete)
+scheduleApi.get("/:id", ScheduleFetch)
+scheduleApi.put("/:id", ScheduleUpdate)
+scheduleApi.put("/:id/enable", ScheduleEnable)
+scheduleApi.put("/:id/disable", ScheduleDisable)
+
+app.route("/api/schedules", schedule)
+app.all("/api/*", (c) => c.notFound())
+openapi.all("/api/schedules", scheduleApi)
+
 
 // Send notification
 const push = new Hono<{

@@ -6,7 +6,7 @@
 		"generate": "drizzle-kit generate",
 		"predeploy": "npm run generate && wrangler d1 migrations apply bark --remote",
 		"deploy": "wrangler deploy",
-		"predev": "npm run generate && wrangler d1 migrations apply bark --local",
+		"predev": "npm run generate && yes | wrangler d1 migrations apply bark --local",
 		"dev": "wrangler dev",
 		"start": "wrangler dev",
 		"cf-typegen": "wrangler types",
