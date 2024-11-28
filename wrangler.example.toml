@@ -3,6 +3,7 @@ name = "cloudflare-bark-server"
 main = "src/index.ts"
 compatibility_date = "2024-11-06"
 compatibility_flags = ["nodejs_compat"]
+assets = { directory = "./dist/", binding = "ASSETS", html_handling = "none", not_found_handling = "single-page-application" }
 
 # 自定义域名
 # route = { pattern = "bark.example.com", custom_domain = true }

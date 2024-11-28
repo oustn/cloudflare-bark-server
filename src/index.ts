@@ -34,6 +34,8 @@ app.use("/push", dbMiddleware)
 app.use("/:device_key/*", dbMiddleware)
 app.use("/api/*", dbMiddleware)
 
+app.get("/schedules", async (c) => c.env.ASSETS.fetch(c.req.raw))
+
 // Setup OpenAPI registry
 const openapi = fromHono(app, {
   docs_url: "/docs",

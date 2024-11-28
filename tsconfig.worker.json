@@ -1,0 +1,45 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": "src",
+    "declaration": true,
+    "sourceMap": true,
+    "esModuleInterop": true,
+    "inlineSourceMap": false,
+    "lib": [
+      "esnext"
+    ],
+    "listEmittedFiles": false,
+    "listFiles": false,
+    "moduleResolution": "Bundler",
+    "noFallthroughCasesInSwitch": true,
+    "pretty": true,
+    "resolveJsonModule": true,
+    "rootDir": ".",
+    "skipLibCheck": true,
+    "strict": false,
+    "traceResolution": false,
+    "outDir": "",
+    "target": "esnext",
+    "module": "esnext",
+    "types": [
+      "@types/node",
+      "@types/service-worker-mock",
+      "@cloudflare/workers-types/2023-07-01",
+      "@cloudflare/vitest-pool-workers"
+    ]
+  },
+  "exclude": [
+    "node_modules",
+    "dist",
+    "tests",
+    "web"
+  ],
+  "include": [
+    "src/**/*.ts",
+    "worker-configuration.d.ts",
+    "vitest.config.ts",
+    "vite.config.ts"
+  ]
+}
