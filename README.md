@@ -2,6 +2,7 @@
 
 Bark 服务端，基于 Cloudflare Workers 实现，新增单用户模式和通知保存。多用户模式和通知保存使用 D1 SQL 数据库。
 
+
 ## 准备工作
 
 1. 创建 [Cloudflare API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/)
@@ -12,7 +13,18 @@ Bark 服务端，基于 Cloudflare Workers 实现，新增单用户模式和通�
 4. [可选] 单用户模式，需要获取 Bark Device Token：打开 Bark App -> 点击右下角设置 -> 点击 Device Token
 5. [可选] 单用户模式，需要生成一个随机字符串作为 Bark Key：`openssl rand -base64 16`，删除所有的符号，剩下的字符串作为密钥
 
-## 使用 GitHub Actions 部署
+## （推荐）自动部署
+
+[![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/oustn/cloudflare-bark-server)
+
+### （可选）配置 GitHub Actions Secret
+
+- `PERSIST`：是否启用多用户模式和通知保存，值为 `true`[可选，开启通知保存时配置]
+- `CUSTOM_DOMAIN`：自定义域名[可选]
+- `D1_NAME`：D1 数据库名称[可选]
+- `D1_ID`：D1 数据库 ID[可选]
+
+## 手动部署
 
 1. Fork 本仓库
 2. 在仓库的 Settings -> Secrets and variables -> Actions 中添加以下 Secrets（由于 action 的 log 是公开的，使用 secret 来配置变量）：
