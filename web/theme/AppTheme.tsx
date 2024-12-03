@@ -2,6 +2,8 @@ import {ThemeProvider, createTheme} from '@mui/material/styles';
 import type {ThemeOptions} from '@mui/material/styles';
 import {colorSchemes, typography, shadows, shape} from './themePrimitives.ts';
 
+import { inputsCustomizations } from './customizations'
+
 interface AppThemeProps {
   children: React.ReactNode;
   /**
@@ -22,7 +24,9 @@ export default function AppTheme({
     typography,
     shadows,
     shape,
-    components: {},
+    components: {
+      ...inputsCustomizations,
+    },
   });
   return (
           <ThemeProvider
