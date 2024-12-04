@@ -87,9 +87,13 @@ export class RegisterEndpoint extends OpenAPIRoute {
     try {
       // 1. first select
       const exist = device.key ? await db.select().from(devices)
-              .where(and(eq(devices.key, device.key), eq(devices.token, device.token)))
+              .where(eq(devices.key, device.key))
               .get() : false
       if (exist) {
+        await db.update(devices).set({
+          token: device.token,
+        })
+        
         return c.json({
           data: {
             key: device.key,
