@@ -16,7 +16,7 @@
 		"@oustn/cloudflare-apns2": "^1.0.0",
 		"@paralleldrive/cuid2": "^2.2.2",
 		"chanfana": "^2.0.2",
-		"drizzle-orm": "^0.36.1",
+		"drizzle-orm": "^0.38.0",
 		"hono": "^4.4.7",
 		"zod": "^3.23.8"
 	},
