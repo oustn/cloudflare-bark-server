@@ -18,8 +18,8 @@ importers:
         specifier: ^2.0.2
         version: 2.3.0
       drizzle-orm:
-        specifier: ^0.36.1
-        version: 0.36.2(@cloudflare/workers-types@4.20241112.0)
+        specifier: ^0.38.0
+        version: 0.38.0(@cloudflare/workers-types@4.20241112.0)
       hono:
         specifier: ^4.4.7
         version: 4.6.10
@@ -1216,15 +1216,15 @@ packages:
     resolution: {integrity: sha512-JimOV+ystXTWMgZkLHYHf2w3oS28hxiH1FR0dkmJLc7GHzdGJoJAQtQS5DRppnabsRZwE2U1F6CuezVBgmsBBQ==}
     hasBin: true
 
-  drizzle-orm@0.36.2:
-    resolution: {integrity: sha512-uVwIdQMo+zwI09hCSNVR29tYn4Vw6F7gga/CsZgDJmTSGDdUdLo+Ur45Qc3gDK7oFTxD/eRANNnPgvPmRY+jSA==}
+  drizzle-orm@0.38.0:
+    resolution: {integrity: sha512-Ev1UYKOUxiVwLZZfos4hoNDMDkp313FqF0CHelhR+BeOdb76z/a6pKF6SgYQSrmj6EXH4cy6QIkmuxl2KIFW0A==}
     peerDependencies:
       '@aws-sdk/client-rds-data': '>=3'
-      '@cloudflare/workers-types': '>=3'
+      '@cloudflare/workers-types': '>=4'
       '@electric-sql/pglite': '>=0.2.0'
       '@libsql/client': '>=0.10.0'
       '@libsql/client-wasm': '>=0.10.0'
-      '@neondatabase/serverless': '>=0.1'
+      '@neondatabase/serverless': '>=0.10.0'
       '@op-engineering/op-sqlite': '>=2'
       '@opentelemetry/api': ^1.4.1
       '@planetscale/database': '>=1'
@@ -3373,7 +3373,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  drizzle-orm@0.36.2(@cloudflare/workers-types@4.20241112.0):
+  drizzle-orm@0.38.0(@cloudflare/workers-types@4.20241112.0):
     optionalDependencies:
       '@cloudflare/workers-types': 4.20241112.0
 
